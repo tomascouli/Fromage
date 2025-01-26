@@ -161,51 +161,209 @@
             Serez vous les héros que la galaxie attend ? La révolution des saveurs commence maintenant. 
             <h2>À vos cartes, Gardiens !</h2>
             </p>
-    </section>
-    <section id="cartes">
-        <h2>Cartes de jeu</h2>
-        <div class="cards">
-            <!-- Planète 1 : Fromacron Six -->
-            <p><strong>Planète 1 : Fromacron Six</strong></p>
-            <img id="carte1" src="carte_1_1.jpg" alt="Carte 1 recto">
-            <button onclick="toggleImage('carte1', 'carte_1_1.jpg', 'carte_1_2.jpg')">Voir verso</button>
-    
-            <!-- Planète 2 : Salage -->
-            <p><strong>Planète 2 : Salage</strong></p>
-            <img id="carte2" src="carte_2_1.jpg" alt="Carte 2 recto">
-            <button onclick="toggleImage('carte2', 'carte_2_1.jpg', 'carte_2_2.jpg')">Voir verso</button>
-    
-            <!-- Planète 3 : Coagulum -->
-            <p><strong>Planète 3 : Coagulum</strong></p>
-            <img id="carte3" src="carte_3_1.jpg" alt="Carte 3 recto">
-            <button onclick="toggleImage('carte3', 'carte_3_1.jpg', 'carte_3_2.jpg')">Voir verso</button>
-    
-            <!-- Planète 4 : Égoutecaillé -->
-            <p><strong>Planète 4 : Égoutecaillé</strong></p>
-            <img id="carte4" src="carte_4_1.jpg" alt="Carte 4 recto">
-            <button onclick="toggleImage('carte4', 'carte_4_1.jpg', 'carte_4_2.jpg')">Voir verso</button>
-    
-            <!-- Planète 5 : Affineo -->
-            <p><strong>Planète 5 : Affineo</strong></p>
-            <img id="carte5" src="carte_5_1.jpg" alt="Carte 5 recto">
-            <button onclick="toggleImage('carte5', 'carte_5_1.jpg', 'carte_5_2.jpg')">Voir verso</button>
-    
-            <!-- Planète 6 : Fermonta -->
-            <p><strong>Planète 6 : Fermonta</strong></p>
-            <img id="carte6" src="carte_6_1.jpg" alt="Carte 6 recto">
-            <button onclick="toggleImage('carte6', 'carte_6_1.jpg', 'carte_6_2.jpg')">Voir verso</button>
-        </div>
-    </section>
-    
-    <script>
-        // Fonction pour basculer entre recto et verso
-        function toggleImage(imgId, recto, verso) {
-            const img = document.getElementById(imgId);
-            // Change l'image si c'est le recto ou le verso
-            img.src = img.src.includes(recto) ? verso : recto;
-        }
-    </script>
-    
+            <section id="cartes">
+                <h2>Cartes de jeu</h2>
+                <div class="cards-container">
+                    <!-- Planète 1 : Fromacron Six -->
+                    <div class="planete">
+                        <h3>Planète 1 : Fromacron Six</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 10 -->
+                            <div>
+                                <img id="carte1_1" src="carte_1_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte1_1', 'carte_1_1_recto.jpg', 'carte_1_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_2" src="carte_1_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte1_2', 'carte_1_2_recto.jpg', 'carte_1_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_3" src="carte_1_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte1_3', 'carte_1_3_recto.jpg', 'carte_1_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_4" src="carte_1_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte1_4', 'carte_1_4_recto.jpg', 'carte_1_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_5" src="carte_1_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte1_5', 'carte_1_5_recto.jpg', 'carte_1_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_6" src="carte_1_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte1_6', 'carte_1_6_recto.jpg', 'carte_1_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_7" src="carte_1_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte1_7', 'carte_1_7_recto.jpg', 'carte_1_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_8" src="carte_1_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte1_8', 'carte_1_8_recto.jpg', 'carte_1_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_9" src="carte_1_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte1_9', 'carte_1_9_recto.jpg', 'carte_1_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_10" src="carte_1_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte1_10', 'carte_1_10_recto.jpg', 'carte_1_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- ... jusqu'à carte_1_10 -->
+                        </div>
+                    </div>
+            
+                    <!-- Planète 2 : Salage -->
+                    <div class="planete">
+                        <h3>Planète 2 : Salage</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 10 -->
+                            <div>
+                                <img id="carte2_1" src="carte_2_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte2_1', 'carte_2_1_recto.jpg', 'carte_2_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_2" src="carte_2_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte2_2', 'carte_2_2_recto.jpg', 'carte_2_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- Ajoute les 8 autres cartes ici pour Planète 2 -->
+                        </div>
+                    </div>
+            
+                    <!-- Planète 3 : Coagulum -->
+                    <div class="planete">
+                        <h3>Planète 3 : Coagulum</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 11 -->
+                            <div>
+                                <img id="carte3_1" src="carte_3_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte3_1', 'carte_3_1_recto.jpg', 'carte_3_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_2" src="carte_3_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte3_2', 'carte_3_2_recto.jpg', 'carte_3_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- Ajoute les 9 autres cartes ici pour Planète 3 -->
+                        </div>
+                    </div>
+            
+                    <!-- Planète 4 : Égoutecaillé -->
+                    <div class="planete">
+                        <h3>Planète 4 : Égoutecaillé</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 20 -->
+                            <div>
+                                <img id="carte4_1" src="carte_4_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte4_1', 'carte_4_1_recto.jpg', 'carte_4_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_2" src="carte_4_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte4_2', 'carte_4_2_recto.jpg', 'carte_4_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- Ajoute les 18 autres cartes ici pour Planète 4 -->
+                        </div>
+                    </div>
+            
+                    <!-- Planète 5 : Affineo -->
+                    <div class="planete">
+                        <h3>Planète 5 : Affineo</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 11 -->
+                            <div>
+                                <img id="carte5_1" src="carte_5_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte5_1', 'carte_5_1_recto.jpg', 'carte_5_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_2" src="carte_5_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte5_2', 'carte_5_2_recto.jpg', 'carte_5_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- Ajoute les 9 autres cartes ici pour Planète 5 -->
+                        </div>
+                    </div>
+            
+                    <!-- Planète 6 : Fermonta -->
+                    <div class="planete">
+                        <h3>Planète 6 : Fermonta</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 25 -->
+                            <div>
+                                <img id="carte6_1" src="carte_6_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte6_1', 'carte_6_1_recto.jpg', 'carte_6_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_2" src="carte_6_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte6_2', 'carte_6_2_recto.jpg', 'carte_6_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <!-- Ajoute les 23 autres cartes ici pour Planète 6 -->
+                        </div>
+                    </div>
+            
+                </div>
+            </section>
+            <style>
+                /* Style global */
+                body {
+                    font-family: Arial, sans-serif;
+                    background: #1a1a1a;
+                    color: white;
+                    margin: 0;
+                    padding: 0;
+                }
+            
+                h2, h3 {
+                    text-align: center;
+                }
+            
+                /* Conteneur des cartes */
+                .cards-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+            
+                .planete {
+                    margin-bottom: 40px;
+                }
+            
+                .cards-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 20px;
+                    margin-top: 20px;
+                }
+            
+                .cards-grid img {
+                    max-width: 100%;
+                    border-radius: 10px;
+                    display: block;
+                    margin: 0 auto;
+                }
+            
+                button {
+                    display: block;
+                    margin: 10px auto;
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #ffcc00;
+                    color: #1a1a1a;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+            
+                button:hover {
+                    background-color: #e6b800;
+                }
+            </style>
+            
+            <script>
+                // Fonction pour basculer entre recto et verso
+                function toggleImage(imgId, recto, verso) {
+                    const img = document.getElementById(imgId);
+                    img.src = img.src.includes(recto) ? verso : recto;
+                }
+            </script>
     <section id="contacts">
         <h2>Contacts</h2>
         <ul>
@@ -215,7 +373,7 @@
             <li><a href="mailto:Armand.QUINQUIS@etu.uca.fr">Armand.QUINQUIS@etu.uca.fr</a></li>
             <li><a href="mailto:Cyril.CAMUSET@etu.uca.fr">Cyril.CAMUSET@etu.uca.fr</a></li>
             <li><a href="mailto:Thomas.VIGNON@etu.uca.fr">Thomas.VIGNON@etu.uca.fr</a></li>
-            <li><a href="mailto:Thomas.VIGNON@etu.uca.fr">Thomas.VIGNON@etu.uca.fr</a></li>
+            <li>Merci</li>
         </ul>
     </section>
     <footer>
