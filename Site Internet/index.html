@@ -1,0 +1,311 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Serious Game</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        /* Background and base styles */
+        body {
+            background: linear-gradient(45deg, #1a1a1a, #2c3e50) fixed;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        /* Mode switcher */
+        #modeSwitcher {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+
+        /* Header styling */
+        #header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        #header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Game mode layout */
+        .container {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            padding: 12px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 16px;
+        }
+          select {
+            padding: 12px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 16px;
+              width: 100%;
+          }
+
+        /* Card container */
+        .card-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* 9:16 card styling */
+        .card {
+            width: 337.5px;
+            height: 600px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background: black; /* Fallback color */
+        }
+
+        .card img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+
+        /* Presentation mode */
+        #presentationMode {
+            display: none;
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Instruction text */
+        .instruction-text {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Mode Switcher -->
+<button id="modeSwitcher">Switch to Presentation</button>
+
+<div id="wrapper">
+    <header id="header">
+        <h1>Serious Game</h1>
+    </header>
+
+    <!-- Game Mode -->
+    <div class="container" id="gameMode">
+        <div class="sidebar">
+            <div class="search-container">
+              <p class="instruction-text">Tapez le numéro de la carte à révéler</p>
+              <input type="number" id="cardInput" placeholder="Numéro (1-...) " min="1" value="1">
+              <p class="instruction-text">Sélectionnez la planète</p>
+              <select id="planetSelector">
+                <option value="1">Planète 1</option>
+                <option value="2">Planète 2</option>
+                <option value="3">Planète 3</option>
+                <option value="4">Planète 4</option>
+                <option value="5">Planète 5</option>
+                <option value="6">Planète 6</option>
+                <option value="F">Planète Finale</option>
+                </select>
+              <button id="okButton">OK</button>
+            </div>
+        </div>
+
+        <div class="card-container">
+            <div class="card">
+                <img src="" alt="Recto" class="front" id="rectoImage">
+                <img src="" alt="Verso" class="back" id="versoImage">
+            </div>
+            <button id="flipButton">Switch Recto/Verso</button>
+        </div>
+    </div>
+
+    <!-- Presentation Mode -->
+    <div id="presentationMode">
+        <h2>Bienvenue dans le Serious Game - Gestion de Projet</h2>
+        <p>Découvrez notre outil pédagogique innovant pour l'apprentissage de la gestion de projet</p>
+    </div>
+</div>
+
+<script>
+     // Global variables
+
+    // Global variables
+        // Global variables
+        // Global variables
+        // Global variables
+    let currentMode = 'game';
+    let currentCard = 1;
+    let isFrontVisible = true;
+    let currentPlanet = 1; // Initialize current planet to 1
+
+   // Mode switching function
+    function switchMode() {
+        const gameMode = document.getElementById('gameMode');
+        const presentationMode = document.getElementById('presentationMode');
+        const modeButton = document.getElementById('modeSwitcher');
+        
+        if(currentMode === 'game') {
+            gameMode.style.display = 'none';
+            presentationMode.style.display = 'block';
+            modeButton.textContent = 'Switch to Game';
+            currentMode = 'presentation';
+        } else {
+            gameMode.style.display = 'flex';
+            presentationMode.style.display = 'none';
+            modeButton.textContent = 'Switch to Presentation';
+            currentMode = 'game';
+        }
+    }
+
+    // Card number calculation
+    function calculateCardNumbers(inputNumber) {
+        return {
+            recto: (inputNumber * 2) - 1,
+            verso: inputNumber * 2
+        };
+    }
+
+  function getImageSrc(planet, card) {
+  const srcJPG = [`images/carte_${planet}_${card}.jpg`, `images/Carte_${planet}_${card}.jpg`];
+  const srcJPEG = [`images/carte_${planet}_${card}.jpeg`, `images/Carte_${planet}_${card}.jpeg`];
+  const srcFinal = [`images/Carte_F_${card}.jpg`,`images/Carte_F_${card}.jpeg`];
+
+  const loadImage = (src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        if (img.naturalWidth !== 0) {
+          resolve(src);
+        } else {
+           resolve(''); // Resolve with an empty string if no image
+        }
+      };
+      img.onerror = () => {
+        resolve('');
+      };
+      img.src = src;
+    });
+  };
+
+    if(planet === 'F')
+      return Promise.any(srcFinal.map(loadImage));
+    
+    return Promise.any([...srcJPG,...srcJPEG].map(loadImage))
+}
+
+    // Show card function
+   async function showCard() {
+        const inputNumber = parseInt(document.getElementById('cardInput').value);
+       
+       
+        if (inputNumber < 1 ) {
+           document.getElementById('rectoImage').src = '';
+           document.getElementById('versoImage').src = '';
+            return;
+        }
+
+      
+        const planetSelector = document.getElementById('planetSelector');
+        currentPlanet = planetSelector.value;
+
+
+        const {recto, verso} = calculateCardNumbers(inputNumber);
+        
+        const rectoSrc = await getImageSrc(currentPlanet,recto)
+        const versoSrc = await getImageSrc(currentPlanet,verso)
+
+        if (rectoSrc == '' || versoSrc == '')
+        {
+           document.getElementById('rectoImage').src = '';
+           document.getElementById('versoImage').src = '';
+            return;
+        }
+
+        document.getElementById('rectoImage').src = rectoSrc;
+        document.getElementById('versoImage').src = versoSrc;
+        
+        isFrontVisible = true;
+        document.getElementById('rectoImage').style.opacity = 1;
+        document.getElementById('versoImage').style.opacity = 0;
+        
+        currentCard = inputNumber;
+    }
+
+    // Flip card function
+    function flipCard() {
+        isFrontVisible = !isFrontVisible;
+        document.getElementById('rectoImage').style.opacity = isFrontVisible ? 1 : 0;
+        document.getElementById('versoImage').style.opacity = isFrontVisible ? 0 : 1;
+    }
+
+    // Event listeners
+    window.addEventListener('load', () => {
+        // Initialize first card
+        showCard();
+        
+        // Set up event listeners
+        document.getElementById('modeSwitcher').addEventListener('click', switchMode);
+        document.getElementById('okButton').addEventListener('click', showCard);
+        document.getElementById('flipButton').addEventListener('click', flipCard);
+
+        // Handle planet selector change
+        const planetSelector = document.getElementById('planetSelector');
+        planetSelector.addEventListener('change', showCard);
+
+         // Handle card input changes
+        const cardInput = document.getElementById('cardInput');
+        cardInput.addEventListener('change', showCard);
+    });
+</script>
+
+</body>
+</html>
