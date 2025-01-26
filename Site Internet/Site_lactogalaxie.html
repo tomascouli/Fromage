@@ -79,8 +79,9 @@
         <a href="#presentation">Présentation</a>
         <a href="#regles">Règles du jeu</a>
         <a href="#cartes">Cartes de jeu</a>
-        <a href="#contacts">Contacts</a>
         <a href="#Jeu en ligne version bêta">Jeu en ligne version bêta</a>
+        <a href="#Minuteur">Minuteur</a>
+        <a href="#contacts">Contacts</a>
     </nav>
     <section id="presentation">
         <h2>Présentation du jeu</h2>
@@ -689,6 +690,157 @@
             <li><a href="mailto:Thomas.VIGNON@etu.uca.fr">Thomas.VIGNON@etu.uca.fr</a></li>
             <li><a> Merci</a></li>
         </ul>
+    </section>
+
+    <section id="Minuteur">
+        <h2>Minuteur</h2>
+        <p>
+             Utilisez ce minuteur pour gérer votre temps lors des missions. Vous avez une heure pour compléter les défis sur chaque planète !
+            </p>
+            <div id="timer-section">
+                <div class="timer" id="timer">01:00:00</div>
+                <div class="buttons">
+                    <button id="startBtn">Mise en marche</button>
+                    <button id="stopBtn" disabled>Arrêt</button>
+                    <button id="resetBtn">Remise à zéro</button>
+                    <button id="minus5Btn">-5 min</button>
+                    <button id="minus1Btn">-1 min</button>
+                </div>
+            </div>
+        </section>
+        
+        <style>
+            /* Style pour la section du minuteur */
+            #minuteur {
+                background-color: #2c2c2c;
+                padding: 30px;
+                margin: 20px auto;
+                border-radius: 10px;
+                max-width: 600px;
+                text-align: center;
+                color: white;
+            }
+        
+            #minuteur h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+        
+            #minuteur p {
+                font-size: 1.2em;
+                margin-bottom: 20px;
+            }
+        
+            .timer {
+                font-size: 3em;
+                color: #ffcc00;
+                margin-bottom: 20px;
+            }
+        
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        
+            button {
+                background-color: #ffcc00;
+                color: #1a1a1a;
+                border: none;
+                padding: 10px 20px;
+                font-size: 1em;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+        
+            button:hover {
+                background-color: #e6b800;
+            }
+        
+            button:disabled {
+                background-color: #777;
+                cursor: not-allowed;
+            }
+        </style>
+        
+        <script>
+            // Initialisation des variables
+            let totalSeconds = 3600; // 1 heure en secondes
+            let timerInterval = null;
+        
+            // Références aux éléments HTML
+            const timerDisplay = document.getElementById("timer");
+            const startBtn = document.getElementById("startBtn");
+            const stopBtn = document.getElementById("stopBtn");
+            const resetBtn = document.getElementById("resetBtn");
+            const minus5Btn = document.getElementById("minus5Btn");
+            const minus1Btn = document.getElementById("minus1Btn");
+        
+            // Afficher le temps sous format HH:MM:SS
+            function updateDisplay() {
+                const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+                const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+                const seconds = String(totalSeconds % 60).padStart(2, "0");
+                timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+        
+            // Fonction pour démarrer le minuteur
+            function startTimer() {
+                if (timerInterval) return; // Empêche plusieurs démarrages
+                timerInterval = setInterval(() => {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        alert("Le temps est écoulé !");
+                    }
+                }, 1000);
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            }
+        
+            // Fonction pour arrêter le minuteur
+            function stopTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        
+            // Fonction pour réinitialiser le minuteur
+            function resetTimer() {
+                stopTimer();
+                totalSeconds = 3600; // Retour à 1 heure
+                updateDisplay();
+            }
+        
+            // Fonction pour retirer 5 minutes
+            function minus5Minutes() {
+                totalSeconds = Math.max(0, totalSeconds - 300); // Retirer 300 secondes (5 minutes)
+                updateDisplay();
+            }
+        
+            // Fonction pour retirer 1 minute
+            function minus1Minute() {
+                totalSeconds = Math.max(0, totalSeconds - 60); // Retirer 60 secondes (1 minute)
+                updateDisplay();
+            }
+        
+            // Ajout des écouteurs d'événements
+            startBtn.addEventListener("click", startTimer);
+            stopBtn.addEventListener("click", stopTimer);
+            resetBtn.addEventListener("click", resetTimer);
+            minus5Btn.addEventListener("click", minus5Minutes);
+            minus1Btn.addEventListener("click", minus1Minute);
+        
+            // Affichage initial
+            updateDisplay();
+        </script>
+        
+
     </section>
 
     <section id="contacts">
