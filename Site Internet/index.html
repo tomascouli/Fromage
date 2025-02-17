@@ -1,311 +1,991 @@
-﻿<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <title>Serious Game</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Gardiens de la Lactogalaxie</title>
     <style>
-        /* Background and base styles */
         body {
-            background: linear-gradient(45deg, #1a1a1a, #2c3e50) fixed;
-            min-height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
-            color: white;
-        }
-
-        /* Mode switcher */
-        #modeSwitcher {
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background 0.3s;
-            z-index: 1000;
-        }
-
-        /* Header styling */
-        #header {
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        #header h1 {
-            font-size: 2.5em;
             margin: 0;
             padding: 0;
+            background: url('https://source.unsplash.com/1600x900/?galaxy') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
         }
-
-        /* Game mode layout */
-        .container {
-            display: flex;
-            gap: 30px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            width: 250px;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-        }
-
-        .search-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        input[type="number"] {
-            padding: 12px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            font-size: 16px;
-        }
-          select {
-            padding: 12px;
-            border: 2px solid #3498db;
-            border-radius: 5px;
-            background: rgba(255,255,255,0.9);
-            color: #333;
-            font-size: 16px;
-              width: 100%;
-          }
-
-        /* Card container */
-        .card-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        /* 9:16 card styling */
-        .card {
-            width: 337.5px;
-            height: 600px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            background: black; /* Fallback color */
-        }
-
-        .card img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: opacity 0.3s;
-        }
-
-        /* Presentation mode */
-        #presentationMode {
-            display: none;
+        header {
             text-align: center;
-            padding: 100px 20px;
-            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1000px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .cards img {
+            max-width: 100%;
+            display: block;
             margin: 0 auto;
         }
-
-        /* Instruction text */
-        .instruction-text {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+        footer {
             text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            color: white;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 1em;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
-<!-- Mode Switcher -->
-<button id="modeSwitcher">Switch to Presentation</button>
-
-<div id="wrapper">
-    <header id="header">
-        <h1>Serious Game</h1>
+    <header>
+        <h1>Les Gardiens de la Lactogalaxie</h1>
     </header>
+    <nav>
+        <a href="#presentation">Présentation</a>
+        <a href="#regles">Règles du jeu</a>
+        <a href="#cartes">Cartes de jeu</a>
+        <a href="#Jeu en ligne version bêta">Jeu en ligne version bêta</a>
+        <a href="#Minuteur">Minuteur</a>
+        <a href="#contacts">Contacts</a>
+    </nav>
+    <section id="presentation">
+        <h2>Présentation du jeu</h2>
+        <p>
+            Nom : <strong>Les Gardiens du Lactogalaxie</strong><br>
+            Thème : Fromages<br>
+            Nom : Les Gardiens du Lactogalaxie<br>
+        Un jeu d’aventure et de résolution d’énigmes dans lequel les joueurs explorent
+        un univers galactique où différentes planètes produisent des fromages extraordinaires
+        grâce à des phénomènes chimiques extraterrestres. Mais l’ordre de l’univers est
+        menacé par l’empire Bel qui veut tuer la diversité des fromages et les mettre tous sous
+        les mêmes conditions.
+        L’idée est de mêler exploration, et résolution de puzzles, tout en cachant les
+        techniques chimiques de fabrication du fromage derrière des mécanismes narratifs et
+        ludiques.<br>
+            Objectif : Les joueurs incarnent des explorateurs intergalactiques chargés de sauver
+        les traditions fromagères de la galaxie, menacées par une organisation maléfique qui
+        veut standardiser toute la production. Ils voyagent de planète en planète pour récolter
+        des artefacts pour leur permettre de vaincre les méchants qui représentent des
+        techniques scientifiques.<br>
+            Planètes : Chaque planète représente une étape de la fabrication du fromage :<br>
+        1. Fromacron six<br>
+        2. Salage<br>
+        3. Coagulum<br>
+        4. Egoutecaillé<br>
+        5. Affineo<br>
+        6. Fermenta<br>
+            Mécanique de jeu :<br>
+        La mécanique du jeu s’inspire de celle du “Unlock”, les joueurs utilisent des cartes
+        numérotées représentant des objets, des indices, ou des zones à explorer.<br>
+        - Combinaison de cartes : Les joueurs doivent associer des cartes entre elles
+        pour avancer.<br>
+        - Résolution de codes : Certaines énigmes demandent de trouver un code ou un
+        chiffre caché.<br>
+        - Observation et réflexion : Les joueurs doivent bien regarder les illustrations et
+        lire les indices pour déduire la solution.
+        </p>
+        <p><strong>Planètes :</strong> Fromacron Six, Salage, Coagulum, Égoutecaillé, Affineo, Fermenta.</p>
+    </section>
+    <section id="regles">
+        <h2>Règles du jeu</h2>
+        <p>Dans un lointain futur, la galaxie est tombée sous le joug de l’Empire Bell, une organisation tyrannique qui a
+            standardisé la production de fromage, imposant un produit fade et sans âme à tous les systèmes stellaires.
+            Mais l’espoir n’est pas perdu ! Vous incarnez les courageux membres de l’équipage " Lactostar ", un vaisseau
+            intergalactique déterminé à restaurer les saveurs uniques des fromages de la galaxie. Votre mission est
+            claire : explorer les six planètes fromagères légendaires pour récupérer leurs artefacts sacrés. Ces artefacts
+            renferment les secrets des fromages authentiques et, une fois réunis, ils permettront de détruire l’Empire
+            BELL et de libérer les traditions fromagères ancestrales. Saurez vous déjouer les pièges des planètes,
+            résoudre les énigmes galactiques, et ramener la diversité culinaire à l'univers ?<br>
+            <p>LES RÈGLES DE LA MISSION</p><br>
+            Pour embarquer dans cette aventure, vous devez former une équipe d’au moins deux explorateurs. Chaque
+            planète que vous visitez cache un artefact crucial, mais vous devrez résoudre des énigmes et surmonter
+            des défis pour le trouver. Vous avez une heure pour réussir à vaincre l'empire Bell (Allez dans la section minuteur de votre site afin de pouvoir commencer la partie). Voici comment fonctionne votre mission :<br>
+            <p>MISE EN PLACE DE L’AVENTURE</p><br>
+            Choisissez votre première destination :
+            Fro Macron 6, la planète d'origine des légendaires Tomes Solaires.
+            Prenez le paquet de cartes correspondant.
+            Retournez la carte numéro 1 du paquet pour commencer. Chaque paquet commence par une carte
+            d'introduction qui vous plonge dans l'histoire et les défis spécifiques de la planète.<br>
+            <p>LES CARTES ET LES INDICES</p><br>
+            Les cartes contiennent des scènes, des objets ou des énigmes. Certaines montrent des bulles numérotées.
+            Lorsqu’une bulle affiche un numéro, trouvez et prenez la carte portant ce numéro dans le paquet. Cette
+            carte dévoilera un nouvel élément de l’histoire ou un nouvel indice.
+            Attention, vous ne pouvez retourner une carte que si cela vous est explicitement demandé par le jeu. Pas
+            de triche, ou l’Empire Bell gagnera !<br>
+            <p>RÉSOLUTION DES DÉFIS</p><br>
+            Chaque planète a ses propres règles spéciales, adaptées à son environnement. Sur Fermenta, par exemple,
+            vous devrez utiliser des objets pour survivre!
+            Faites preuve de logique, d’observation et de coopération pour résoudre les énigmes.<br>
+            <p>COLLECTE DES ARTEFACTS</p><br>
+            Une fois les défis d’une planète résolus, vous récupérerez son artefact unique. Conservez
+            le précieusement
+            : il est indispensable pour affronter l’Empire Bell lors de l’épreuve finale. Ensuite, passez à la planète
+            suivante en suivant les mêmes étapes.<br>
+            <p>OBJECTIF ULTIME</p><br>
+            Réunissez les six artefacts légendaires pour anéantir l’Empire Bell et ramener la liberté et la diversité des
+            fromages dans toute la galaxie.<br>
+            Serez vous les héros que la galaxie attend ? La révolution des saveurs commence maintenant. 
+            <h2>À vos cartes, Gardiens !</h2>
+            </p>
+        </section>
+            <section id="cartes">
+                <h2>Cartes de jeu</h2>
+                <div class="cards-container">
+                    <!-- Planète 1 : Fromacron Six -->
+                    <div class="planete">
+                        <h3>Planète 1 : Fromacron Six</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 10 -->
+                            <div>
+                                <img id="carte1_1" src="carte_1_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte1_1', 'carte_1_1_recto.jpg', 'carte_1_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_2" src="carte_1_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte1_2', 'carte_1_2_recto.jpg', 'carte_1_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_3" src="carte_1_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte1_3', 'carte_1_3_recto.jpg', 'carte_1_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_4" src="carte_1_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte1_4', 'carte_1_4_recto.jpg', 'carte_1_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_5" src="carte_1_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte1_5', 'carte_1_5_recto.jpg', 'carte_1_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_6" src="carte_1_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte1_6', 'carte_1_6_recto.jpg', 'carte_1_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_7" src="carte_1_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte1_7', 'carte_1_7_recto.jpg', 'carte_1_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_8" src="carte_1_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte1_8', 'carte_1_8_recto.jpg', 'carte_1_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_9" src="carte_1_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte1_9', 'carte_1_9_recto.jpg', 'carte_1_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte1_10" src="carte_1_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte1_10', 'carte_1_10_recto.jpg', 'carte_1_10_verso.jpg')">Voir verso</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Planète 2 : Salage -->
+                    <div class="planete">
+                        <h3>Planète 2 : Salage</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 10 -->
+                            <div>
+                                <img id="carte2_1" src="carte_2_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte2_1', 'carte_2_1_recto.jpg', 'carte_2_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_2" src="carte_2_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte2_2', 'carte_2_2_recto.jpg', 'carte_2_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_3" src="carte_2_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte2_3', 'carte_2_3_recto.jpg', 'carte_2_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_4" src="carte_2_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte2_4', 'carte_2_4_recto.jpg', 'carte_2_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_5" src="carte_2_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte2_5', 'carte_2_5_recto.jpg', 'carte_2_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_6" src="carte_2_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte2_6', 'carte_2_6_recto.jpg', 'carte_2_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_7" src="carte_2_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte2_7', 'carte_2_7_recto.jpg', 'carte_2_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_8" src="carte_2_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte2_8', 'carte_2_8_recto.jpg', 'carte_2_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_9" src="carte_2_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte2_9', 'carte_2_9_recto.jpg', 'carte_2_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte2_10" src="carte_2_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte2_10', 'carte_2_10_recto.jpg', 'carte_2_10_verso.jpg')">Voir verso</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Planète 3 : Coagulum -->
+                    <div class="planete">
+                        <h3>Planète 3 : Coagulum</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 11 -->
+                            <div>
+                                <img id="carte3_1" src="carte_3_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte3_1', 'carte_3_1_recto.jpg', 'carte_3_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_2" src="carte_3_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte3_2', 'carte_3_2_recto.jpg', 'carte_3_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_3" src="carte_3_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte3_3', 'carte_3_3_recto.jpg', 'carte_3_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_4" src="carte_3_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte3_4', 'carte_3_4_recto.jpg', 'carte_3_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_5" src="carte_3_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte3_5', 'carte_3_5_recto.jpg', 'carte_3_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_6" src="carte_3_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte3_6', 'carte_3_6_recto.jpg', 'carte_3_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_7" src="carte_3_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte3_7', 'carte_3_7_recto.jpg', 'carte_3_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_8" src="carte_3_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte3_8', 'carte_3_8_recto.jpg', 'carte_3_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_9" src="carte_3_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte3_9', 'carte_3_9_recto.jpg', 'carte_3_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_10" src="carte_3_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte3_10', 'carte_3_10_recto.jpg', 'carte_3_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte3_11" src="carte_3_11_recto.jpg" alt="Carte 11 recto">
+                                <button onclick="toggleImage('carte3_11', 'carte_3_11_recto.jpg', 'carte_3_11_verso.jpg')">Voir verso</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Planète 4 : Égoutecaillé -->
+                    <div class="planete">
+                        <h3>Planète 4 : Égoutecaillé</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 20 -->
+                            <div>
+                                <img id="carte4_1" src="carte_4_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte4_1', 'carte_4_1_recto.jpg', 'carte_4_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_2" src="carte_4_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte4_2', 'carte_4_2_recto.jpg', 'carte_4_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_3" src="carte_4_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte4_3', 'carte_4_3_recto.jpg', 'carte_4_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_4" src="carte_4_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte4_4', 'carte_4_4_recto.jpg', 'carte_4_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_5" src="carte_4_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte4_5', 'carte_4_5_recto.jpg', 'carte_4_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_6" src="carte_4_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte4_6', 'carte_4_6_recto.jpg', 'carte_4_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_7" src="carte_4_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte4_7', 'carte_4_7_recto.jpg', 'carte_4_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_8" src="carte_4_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte4_8', 'carte_4_8_recto.jpg', 'carte_4_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_9" src="carte_4_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte4_9', 'carte_4_9_recto.jpg', 'carte_4_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_10" src="carte_4_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte4_10', 'carte_4_10_recto.jpg', 'carte_4_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_11" src="carte_4_11_recto.jpg" alt="Carte 11 recto">
+                                <button onclick="toggleImage('carte4_11', 'carte_4_11_recto.jpg', 'carte_4_11_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_12" src="carte_4_12_recto.jpg" alt="Carte 12 recto">
+                                <button onclick="toggleImage('carte4_12', 'carte_4_12_recto.jpg', 'carte_4_12_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_13" src="carte_4_13_recto.jpg" alt="Carte 13 recto">
+                                <button onclick="toggleImage('carte4_13', 'carte_4_13_recto.jpg', 'carte_4_13_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_14" src="carte_4_14_recto.jpg" alt="Carte 14 recto">
+                                <button onclick="toggleImage('carte4_14', 'carte_4_14_recto.jpg', 'carte_4_14_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_15" src="carte_4_15_recto.jpg" alt="Carte 15 recto">
+                                <button onclick="toggleImage('carte4_15', 'carte_4_15_recto.jpg', 'carte_4_15_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_16" src="carte_4_16_recto.jpg" alt="Carte 16 recto">
+                                <button onclick="toggleImage('carte4_16', 'carte_4_16_recto.jpg', 'carte_4_16_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_17" src="carte_4_17_recto.jpg" alt="Carte 17 recto">
+                                <button onclick="toggleImage('carte4_17', 'carte_4_17_recto.jpg', 'carte_4_17_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_18" src="carte_4_18_recto.jpg" alt="Carte 18 recto">
+                                <button onclick="toggleImage('carte4_18', 'carte_4_18_recto.jpg', 'carte_4_18_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_19" src="carte_4_19_recto.jpg" alt="Carte 19 recto">
+                                <button onclick="toggleImage('carte4_19', 'carte_4_19_recto.jpg', 'carte_4_19_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte4_20" src="carte_4_20_recto.jpg" alt="Carte 20 recto">
+                                <button onclick="toggleImage('carte4_20', 'carte_4_20_recto.jpg', 'carte_4_20_verso.jpg')">Voir verso</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Planète 5 : Affineo -->
+                    <div class="planete">
+                        <h3>Planète 5 : Affineo</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 11 -->
+                            <div>
+                                <img id="carte5_1" src="carte_5_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte5_1', 'carte_5_1_recto.jpg', 'carte_5_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_2" src="carte_5_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte5_2', 'carte_5_2_recto.jpg', 'carte_5_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_3" src="carte_5_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte5_3', 'carte_5_3_recto.jpg', 'carte_5_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_4" src="carte_5_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte5_4', 'carte_5_4_recto.jpg', 'carte_5_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_5" src="carte_5_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte5_5', 'carte_5_5_recto.jpg', 'carte_5_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_6" src="carte_5_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte5_6', 'carte_5_6_recto.jpg', 'carte_5_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_7" src="carte_5_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte5_7', 'carte_5_7_recto.jpg', 'carte_5_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_8" src="carte_5_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte5_8', 'carte_5_8_recto.jpg', 'carte_5_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_9" src="carte_5_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte5_9', 'carte_5_9_recto.jpg', 'carte_5_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_10" src="carte_5_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte5_10', 'carte_5_10_recto.jpg', 'carte_5_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte5_11" src="carte_5_11_recto.jpg" alt="Carte 11 recto">
+                                <button onclick="toggleImage('carte5_11', 'carte_5_11_recto.jpg', 'carte_5_11_verso.jpg')">Voir verso</button>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Planète 6 : Fermenta -->
+                    <div class="planete">
+                        <h3>Planète 6 : Fermenta</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 25 -->
+                            <div>
+                                <img id="carte6_1" src="carte_6_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carte6_1', 'carte_6_1_recto.jpg', 'carte_6_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_2" src="carte_6_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carte6_2', 'carte_6_2_recto.jpg', 'carte_6_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_3" src="carte_6_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carte6_3', 'carte_6_3_recto.jpg', 'carte_6_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_4" src="carte_6_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carte6_4', 'carte_6_4_recto.jpg', 'carte_6_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_5" src="carte_6_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carte6_5', 'carte_6_5_recto.jpg', 'carte_6_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_6" src="carte_6_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carte6_6', 'carte_6_6_recto.jpg', 'carte_6_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_7" src="carte_6_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carte6_7', 'carte_6_7_recto.jpg', 'carte_6_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_8" src="carte_6_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carte6_8', 'carte_6_8_recto.jpg', 'carte_6_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_9" src="carte_6_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carte6_9', 'carte_6_9_recto.jpg', 'carte_6_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_10" src="carte_6_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carte6_10', 'carte_6_10_recto.jpg', 'carte_6_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_11" src="carte_6_11_recto.jpg" alt="Carte 11 recto">
+                                <button onclick="toggleImage('carte6_11', 'carte_6_11_recto.jpg', 'carte_6_11_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_12" src="carte_6_12_recto.jpg" alt="Carte 12 recto">
+                                <button onclick="toggleImage('carte6_12', 'carte_6_12_recto.jpg', 'carte_6_12_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_13" src="carte_6_13_recto.jpg" alt="Carte 13 recto">
+                                <button onclick="toggleImage('carte6_13', 'carte_6_13_recto.jpg', 'carte_6_13_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_14" src="carte_6_14_recto.jpg" alt="Carte 14 recto">
+                                <button onclick="toggleImage('carte6_14', 'carte_6_14_recto.jpg', 'carte_6_14_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_15" src="carte_6_15_recto.jpg" alt="Carte 15 recto">
+                                <button onclick="toggleImage('carte6_15', 'carte_6_15_recto.jpg', 'carte_6_15_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_16" src="carte_6_16_recto.jpg" alt="Carte 16 recto">
+                                <button onclick="toggleImage('carte6_16', 'carte_6_16_recto.jpg', 'carte_6_16_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_17" src="carte_6_17_recto.jpg" alt="Carte 17 recto">
+                                <button onclick="toggleImage('carte6_17', 'carte_6_17_recto.jpg', 'carte_6_17_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_18" src="carte_6_18_recto.jpg" alt="Carte 18 recto">
+                                <button onclick="toggleImage('carte6_18', 'carte_6_18_recto.jpg', 'carte_6_18_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_19" src="carte_6_19_recto.jpg" alt="Carte 19 recto">
+                                <button onclick="toggleImage('carte6_19', 'carte_6_19_recto.jpg', 'carte_6_19_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_20" src="carte_6_20_recto.jpg" alt="Carte 20 recto">
+                                <button onclick="toggleImage('carte6_20', 'carte_6_20_recto.jpg', 'carte_6_20_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_21" src="carte_6_21_recto.jpg" alt="Carte 21 recto">
+                                <button onclick="toggleImage('carte6_21', 'carte_6_21_recto.jpg', 'carte_6_21_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_22" src="carte_6_22_recto.jpg" alt="Carte 22 recto">
+                                <button onclick="toggleImage('carte6_22', 'carte_6_22_recto.jpg', 'carte_6_22_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_23" src="carte_6_23_recto.jpg" alt="Carte 23 recto">
+                                <button onclick="toggleImage('carte6_23', 'carte_6_23_recto.jpg', 'carte_6_23_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_24" src="carte_6_24_recto.jpg" alt="Carte 24 recto">
+                                <button onclick="toggleImage('carte6_24', 'carte_6_24_recto.jpg', 'carte_6_24_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carte6_25" src="carte_6_25_recto.jpg" alt="Carte 25 recto">
+                                <button onclick="toggleImage('carte6_25', 'carte_6_25_recto.jpg', 'carte_6_25_verso.jpg')">Voir verso</button>
+                            </div>
+                            
+                        </div>
+                    </div>
 
-    <!-- Game Mode -->
-    <div class="container" id="gameMode">
-        <div class="sidebar">
-            <div class="search-container">
-              <p class="instruction-text">Tapez le numéro de la carte à révéler</p>
-              <input type="number" id="cardInput" placeholder="Numéro (1-...) " min="1" value="1">
-              <p class="instruction-text">Sélectionnez la planète</p>
-              <select id="planetSelector">
-                <option value="1">Planète 1</option>
-                <option value="2">Planète 2</option>
-                <option value="3">Planète 3</option>
-                <option value="4">Planète 4</option>
-                <option value="5">Planète 5</option>
-                <option value="6">Planète 6</option>
-                <option value="F">Planète Finale</option>
-                </select>
-              <button id="okButton">OK</button>
-            </div>
-        </div>
-
-        <div class="card-container">
-            <div class="card">
-                <img src="" alt="Recto" class="front" id="rectoImage">
-                <img src="" alt="Verso" class="back" id="versoImage">
-            </div>
-            <button id="flipButton">Switch Recto/Verso</button>
-        </div>
-    </div>
-
-    <!-- Presentation Mode -->
-    <div id="presentationMode">
-        <h2>Bienvenue dans le Serious Game - Gestion de Projet</h2>
-        <p>Découvrez notre outil pédagogique innovant pour l'apprentissage de la gestion de projet</p>
-    </div>
-</div>
-
-<script>
-     // Global variables
-
-    // Global variables
-        // Global variables
-        // Global variables
-        // Global variables
-    let currentMode = 'game';
-    let currentCard = 1;
-    let isFrontVisible = true;
-    let currentPlanet = 1; // Initialize current planet to 1
-
-   // Mode switching function
-    function switchMode() {
-        const gameMode = document.getElementById('gameMode');
-        const presentationMode = document.getElementById('presentationMode');
-        const modeButton = document.getElementById('modeSwitcher');
+                    <!-- Planète 7 : Final -->
+                    <div class="planete">
+                        <h3>Planète Final : Combat Final</h3>
+                        <div class="cards-grid">
+                            <!-- Cartes 1 à 10 -->
+                            <div>
+                                <img id="carteF_1" src="carte_F_1_recto.jpg" alt="Carte 1 recto">
+                                <button onclick="toggleImage('carteF_1', 'carte_F_1_recto.jpg', 'carte_F_1_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_2" src="carte_F_2_recto.jpg" alt="Carte 2 recto">
+                                <button onclick="toggleImage('carteF_2', 'carte_F_2_recto.jpg', 'carte_F_2_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_3" src="carte_F_3_recto.jpg" alt="Carte 3 recto">
+                                <button onclick="toggleImage('carteF_3', 'carte_F_3_recto.jpg', 'carte_F_3_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_4" src="carte_F_4_recto.jpg" alt="Carte 4 recto">
+                                <button onclick="toggleImage('carteF_4', 'carte_F_4_recto.jpg', 'carte_F_4_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_5" src="carte_F_5_recto.jpg" alt="Carte 5 recto">
+                                <button onclick="toggleImage('carteF_5', 'carte_F_5_recto.jpg', 'carte_F_5_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_6" src="carte_F_6_recto.jpg" alt="Carte 6 recto">
+                                <button onclick="toggleImage('carteF_6', 'carte_F_6_recto.jpg', 'carte_F_6_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_7" src="carte_F_7_recto.jpg" alt="Carte 7 recto">
+                                <button onclick="toggleImage('carteF_7', 'carte_F_7_recto.jpg', 'carte_F_7_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_8" src="carte_F_8_recto.jpg" alt="Carte 8 recto">
+                                <button onclick="toggleImage('carteF_8', 'carte_F_8_recto.jpg', 'carte_F_8_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_9" src="carte_F_9_recto.jpg" alt="Carte 9 recto">
+                                <button onclick="toggleImage('carteF_9', 'carte_F_9_recto.jpg', 'carte_F_9_verso.jpg')">Voir verso</button>
+                            </div>
+                            <div>
+                                <img id="carteF_10" src="carte_F_10_recto.jpg" alt="Carte 10 recto">
+                                <button onclick="toggleImage('carteF_10', 'carte_F_10_recto.jpg', 'carte_F_10_verso.jpg')">Voir verso</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+            
+                </div>
+            </section>
+            <style>
+                /* Style global */
+                body {
+                    font-family: Arial, sans-serif;
+                    background: #1a1a1a;
+                    color: white;
+                    margin: 0;
+                    padding: 0;
+                }
+            
+                h2, h3 {
+                    text-align: center;
+                }
+            
+                /* Conteneur des cartes */
+                .cards-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+            
+                .planete {
+                    margin-bottom: 40px;
+                }
+            
+                .cards-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 20px;
+                    margin-top: 20px;
+                }
+            
+                .cards-grid img {
+                    max-width: 100%;
+                    border-radius: 10px;
+                    display: block;
+                    margin: 0 auto;
+                }
+            
+                button {
+                    display: block;
+                    margin: 10px auto;
+                    padding: 10px 15px;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #ffcc00;
+                    color: #1a1a1a;
+                    font-size: 14px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+            
+                button:hover {
+                    background-color: #e6b800;
+                }
+            </style>
+            
+            <script>
+                // Fonction pour basculer entre recto et verso
+                function toggleImage(imgId, recto, verso) {
+                    const img = document.getElementById(imgId);
+                    img.src = img.src.includes(recto) ? verso : recto;
+                }
+            </script>
+    <section id="Jeu en ligne version bêta">
+                <h2>Jeu en ligne - Version bêta</h2>
+                <p>
+                    Découvrez la version bêta de notre jeu en ligne. Veuillez noter qu'il est encore en cours de développement, et vos retours sont les bienvenus !
+                </p>
+                <div class="iframe-container">
+                    <iframe src="site.html" title="Jeu en ligne - Version bêta" frameborder="0"></iframe>
+                </div>
+                <div class="buttons">
+                    <button onclick="openInFullscreen()">Plein écran</button>
+                </div>
+            </section>
+            
+            <style>
+                /* Style pour la section du jeu en ligne */
+                #jeu-en-ligne {
+                    background-color: #2c2c2c;
+                    color: white;
+                    padding: 30px;
+                    margin: 20px auto;
+                    border-radius: 10px;
+                    max-width: 900px;
+                    text-align: center;
+                }
+            
+                #jeu-en-ligne h2 {
+                    font-size: 2em;
+                    margin-bottom: 20px;
+                }
+            
+                #jeu-en-ligne p {
+                    font-size: 1.2em;
+                    margin-bottom: 20px;
+                }
+            
+                .iframe-container {
+                    position: relative;
+                    width: 100%;
+                    padding-top: 56.25%; /* Ratio 16:9 */
+                    border: 2px solid #ffcc00;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+                }
+            
+                iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            
+                .buttons {
+                    text-align: center;
+                }
+            
+                button {
+                    background-color: #ffcc00;
+                    color: #1a1a1a;
+                    border: none;
+                    padding: 10px 20px;
+                    font-size: 1em;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+            
+                button:hover {
+                    background-color: #e6b800;
+                }
+            </style>
+            
+            <script>
+                // Fonction pour ouvrir le jeu en plein écran
+                function openInFullscreen() {
+                    window.open("index.html", "_blank");
+                }
+            </script>
+            
         
-        if(currentMode === 'game') {
-            gameMode.style.display = 'none';
-            presentationMode.style.display = 'block';
-            modeButton.textContent = 'Switch to Game';
-            currentMode = 'presentation';
-        } else {
-            gameMode.style.display = 'flex';
-            presentationMode.style.display = 'none';
-            modeButton.textContent = 'Switch to Presentation';
-            currentMode = 'game';
-        }
-    }
+    </section>
 
-    // Card number calculation
-    function calculateCardNumbers(inputNumber) {
-        return {
-            recto: (inputNumber * 2) - 1,
-            verso: inputNumber * 2
-        };
-    }
+    <section id="Minuteur">
+        <h2>Minuteur</h2>
+        <p>
+            Utilisez ce minuteur pour gérer votre temps lors des missions. Vous avez une heure pour compléter les défis sur chaque planète !
+            </p>
+            <div id="timer-section">
+                <div class="timer" id="timer">01:00:00</div>
+                <div class="buttons">
+                    <button id="startBtn">Mise en marche</button>
+                    <button id="stopBtn" disabled>Arrêt</button>
+                    <button id="resetBtn">Remise à zéro</button>
+                    <button id="minus5Btn">-5 min</button>
+                    <button id="minus1Btn">-1 min</button>
+                </div>
+                <!-- Ajout du fichier audio -->
+                <audio id="evilLaugh" src="evil_laugh.mp3"></audio>
+            </div>
+        </section>
+        
+        <style>
+            /* Style pour la section du minuteur */
+            #minuteur {
+                background-color: #2c2c2c;
+                padding: 30px;
+                margin: 20px auto;
+                border-radius: 10px;
+                max-width: 600px;
+                text-align: center;
+                color: white;
+            }
+        
+            #minuteur h2 {
+                font-size: 2em;
+                margin-bottom: 20px;
+            }
+        
+            #minuteur p {
+                font-size: 1.2em;
+                margin-bottom: 20px;
+            }
+        
+            .timer {
+                font-size: 3em;
+                color: #ffcc00;
+                margin-bottom: 20px;
+            }
+        
+            .buttons {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+        
+            button {
+                background-color: #ffcc00;
+                color: #1a1a1a;
+                border: none;
+                padding: 10px 20px;
+                font-size: 1em;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+        
+            button:hover {
+                background-color: #e6b800;
+            }
+        
+            button:disabled {
+                background-color: #777;
+                cursor: not-allowed;
+            }
+        </style>
+        
+        <script>
+            // Initialisation des variables
+            let totalSeconds = 3600; // 1 heure en secondes
+            let timerInterval = null;
+        
+            // Références aux éléments HTML
+            const timerDisplay = document.getElementById("timer");
+            const startBtn = document.getElementById("startBtn");
+            const stopBtn = document.getElementById("stopBtn");
+            const resetBtn = document.getElementById("resetBtn");
+            const minus5Btn = document.getElementById("minus5Btn");
+            const minus1Btn = document.getElementById("minus1Btn");
+            const evilLaugh = document.getElementById("evilLaugh");
+        
+            // Afficher le temps sous format HH:MM:SS
+            function updateDisplay() {
+                const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+                const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+                const seconds = String(totalSeconds % 60).padStart(2, "0");
+                timerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+        
+            // Fonction pour démarrer le minuteur
+            function startTimer() {
+                if (timerInterval) return; // Empêche plusieurs démarrages
+                timerInterval = setInterval(() => {
+                    if (totalSeconds > 0) {
+                        totalSeconds--;
+                        updateDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        playEvilLaugh(); // Joue le son quand le minuteur atteint 0
+                        alert("Le temps est écoulé !");
+                    }
+                }, 1000);
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            }
+        
+            // Fonction pour arrêter le minuteur
+            function stopTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        
+            // Fonction pour réinitialiser le minuteur
+            function resetTimer() {
+                stopTimer();
+                totalSeconds = 3600; // Retour à 1 heure
+                updateDisplay();
+            }
+        
+            // Fonction pour retirer 5 minutes
+            function minus5Minutes() {
+                totalSeconds = Math.max(0, totalSeconds - 300); // Retirer 300 secondes (5 minutes)
+                updateDisplay();
+            }
+        
+            // Fonction pour retirer 1 minute
+            function minus1Minute() {
+                totalSeconds = Math.max(0, totalSeconds - 60); // Retirer 60 secondes (1 minute)
+                updateDisplay();
+            }
+        
+            // Fonction pour jouer le son de méchant qui rigole
+            function playEvilLaugh() {
+                evilLaugh.play();
+            }
+        
+            // Ajout des écouteurs d'événements
+            startBtn.addEventListener("click", startTimer);
+            stopBtn.addEventListener("click", stopTimer);
+            resetBtn.addEventListener("click", resetTimer);
+            minus5Btn.addEventListener("click", minus5Minutes);
+            minus1Btn.addEventListener("click", minus1Minute);
+        
+            // Affichage initial
+            updateDisplay();
+        </script>
+        
 
-  function getImageSrc(planet, card) {
-  const srcJPG = [`images/carte_${planet}_${card}.jpg`, `images/Carte_${planet}_${card}.jpg`];
-  const srcJPEG = [`images/carte_${planet}_${card}.jpeg`, `images/Carte_${planet}_${card}.jpeg`];
-  const srcFinal = [`images/Carte_F_${card}.jpg`,`images/Carte_F_${card}.jpeg`];
+    </section>
 
-  const loadImage = (src) => {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => {
-        if (img.naturalWidth !== 0) {
-          resolve(src);
-        } else {
-           resolve(''); // Resolve with an empty string if no image
-        }
-      };
-      img.onerror = () => {
-        resolve('');
-      };
-      img.src = src;
-    });
-  };
-
-    if(planet === 'F')
-      return Promise.any(srcFinal.map(loadImage));
+    <section id="contacts">
+        <h2>Contacts</h2>
+        <p>
+            Vous avez des questions, des suggestions ou besoin d'informations supplémentaires ? 
+            N'hésitez pas à nous contacter. Notre équipe est là pour vous répondre !
+        </p>
+        <ul>
+            <li><a href="mailto:Loic.VIENNE@etu.uca.fr">Loic.VIENNE@etu.uca.fr</a></li>
+            <li><a href="mailto:Lina.MEDDOUR@etu.uca.fr">Lina.MEDDOUR@etu.uca.fr</a></li>
+            <li><a href="mailto:Amadou.BARRY2@etu.uca.fr">Amadou.BARRY2@etu.uca.fr</a></li>
+            <li><a href="mailto:Armand.QUINQUIS@etu.uca.fr">Armand.QUINQUIS@etu.uca.fr</a></li>
+            <li><a href="mailto:Cyril.CAMUSET@etu.uca.fr">Cyril.CAMUSET@etu.uca.fr</a></li>
+            <li><a href="mailto:Thomas.VIGNON@etu.uca.fr">Thomas.VIGNON@etu.uca.fr</a></li>
+        </ul>
+        <p>
+            Merci pour votre intérêt et votre soutien à notre projet ! 🧀✨
+        </p>
+    </section>
     
-    return Promise.any([...srcJPG,...srcJPEG].map(loadImage))
-}
-
-    // Show card function
-   async function showCard() {
-        const inputNumber = parseInt(document.getElementById('cardInput').value);
-       
-       
-        if (inputNumber < 1 ) {
-           document.getElementById('rectoImage').src = '';
-           document.getElementById('versoImage').src = '';
-            return;
+    <style>
+        /* Style pour la section Contacts */
+        #contacts {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 30px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
         }
-
-      
-        const planetSelector = document.getElementById('planetSelector');
-        currentPlanet = planetSelector.value;
-
-
-        const {recto, verso} = calculateCardNumbers(inputNumber);
-        
-        const rectoSrc = await getImageSrc(currentPlanet,recto)
-        const versoSrc = await getImageSrc(currentPlanet,verso)
-
-        if (rectoSrc == '' || versoSrc == '')
-        {
-           document.getElementById('rectoImage').src = '';
-           document.getElementById('versoImage').src = '';
-            return;
+    
+        #contacts h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
-
-        document.getElementById('rectoImage').src = rectoSrc;
-        document.getElementById('versoImage').src = versoSrc;
-        
-        isFrontVisible = true;
-        document.getElementById('rectoImage').style.opacity = 1;
-        document.getElementById('versoImage').style.opacity = 0;
-        
-        currentCard = inputNumber;
-    }
-
-    // Flip card function
-    function flipCard() {
-        isFrontVisible = !isFrontVisible;
-        document.getElementById('rectoImage').style.opacity = isFrontVisible ? 1 : 0;
-        document.getElementById('versoImage').style.opacity = isFrontVisible ? 0 : 1;
-    }
-
-    // Event listeners
-    window.addEventListener('load', () => {
-        // Initialize first card
-        showCard();
-        
-        // Set up event listeners
-        document.getElementById('modeSwitcher').addEventListener('click', switchMode);
-        document.getElementById('okButton').addEventListener('click', showCard);
-        document.getElementById('flipButton').addEventListener('click', flipCard);
-
-        // Handle planet selector change
-        const planetSelector = document.getElementById('planetSelector');
-        planetSelector.addEventListener('change', showCard);
-
-         // Handle card input changes
-        const cardInput = document.getElementById('cardInput');
-        cardInput.addEventListener('change', showCard);
-    });
-</script>
-
+    
+        #contacts p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+    
+        #contacts ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        #contacts ul li {
+            margin-bottom: 10px;
+        }
+    
+        #contacts ul li a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+    
+        #contacts ul li a:hover {
+            color: #e6b800;
+        }
+    </style>
+    
+    <footer>
+        <p>&copy; 2025 Les Gardiens de la Lactogalaxie. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
